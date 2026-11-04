@@ -16,7 +16,7 @@ from shapely.ops import substring, unary_union
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.3.2"
+VERSION = "0.3.3"
 sys.path.insert(0, str(ROOT / "sources"))
 from paths import ACCENTS, GLYPHS, STITCHED_GLYPHS  # noqa: E402
 
@@ -61,7 +61,7 @@ def form(strokes, style, char=None):
             intervals = (10, 11, 10, 12, 10, 11, 10)
             distance = 0
             stitch_index = 0
-            core_width = {"A": 75, "e": 70, "g": 75, "&": 60, "@": 50}.get(char, 94)
+            core_width = {"A": 75, "e": 70, "g": 75, "m": 75, "&": 60, "@": 50}.get(char, 94)
             strand_shapes = [line.buffer(core_width, cap_style="flat",
                                          join_style="bevel" if char == "A" else "round",
                                          quad_segs=5)]
@@ -78,7 +78,7 @@ def form(strokes, style, char=None):
                 dx, dy = after.x - before.x, after.y - before.y
                 length = max((dx * dx + dy * dy) ** 0.5, 1)
                 nx, ny = -dy / length, dx / length
-                half_width = {"A": 80, "e": 72, "g": 80, "&": 68, "@": 55}.get(char, 100) + (stitch_index * 3) % 7
+                half_width = {"A": 80, "e": 72, "g": 80, "m": 82, "&": 68, "@": 55}.get(char, 100) + (stitch_index * 3) % 7
                 skew = (-3, -1, 1, 2, 3, -2, 0)[stitch_index % 7]
                 bend = (-2, 1, 0, 2, -1)[stitch_index % 5]
                 thread = LineString([
@@ -101,11 +101,17 @@ def form(strokes, style, char=None):
             radius = (62 if char == "&" else 72) if style == "StitchedUI" else 36
             pieces.append(line.buffer(radius, cap_style="round", join_style="round", quad_segs=5))
     if style == "Stitched":
-        shape = None
-        for stroke_shape, groove_area in stitched_layers:
-            shape = stroke_shape if shape is None else shape.union(stroke_shape)
-            if groove_area is not None:
-                shape = shape.difference(groove_area)
+        if char == "m":
+            shape = unary_union([
+                stroke_shape.difference(groove_area) if groove_area is not None else stroke_shape
+                for stroke_shape, groove_area in stitched_layers
+            ])
+        else:
+            shape = None
+            for stroke_shape, groove_area in stitched_layers:
+                shape = stroke_shape if shape is None else shape.union(stroke_shape)
+                if groove_area is not None:
+                    shape = shape.difference(groove_area)
     else:
         shape = unary_union(pieces)
     return shape.simplify(1.4, preserve_topology=True)
