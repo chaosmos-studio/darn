@@ -16,7 +16,7 @@ from shapely.ops import substring, unary_union
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 sys.path.insert(0, str(ROOT / "sources"))
 from paths import ACCENTS, GLYPHS, STITCHED_GLYPHS  # noqa: E402
 
@@ -91,7 +91,7 @@ def form(strokes, style, char=None):
                 thickness = (7.2, 7.6, 7.4, 7.8, 7.3)[stitch_index % 5]
                 strand_shapes.append(thread.buffer(thickness, cap_style="round", join_style="round", quad_segs=3))
                 if 20 < distance < line.length - 20:
-                    grooves.append(thread.buffer(1.1, cap_style="round", join_style="round", quad_segs=2))
+                    grooves.append(thread.buffer(1.8, cap_style="round", join_style="round", quad_segs=2))
                 distance += intervals[stitch_index % len(intervals)]
                 stitch_index += 1
             stroke_shape = unary_union(strand_shapes)
