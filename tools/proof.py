@@ -97,15 +97,17 @@ def phone(dark):
     draw.line((24, 640, 366, 640), fill=body)
     draw.text((24, 662), "SHIFT  01 / 09", font=font("StitchedUI", 22), fill=body)
     draw.text((24, 714), "Il1  O0  Café  forêt", font=font("StitchedUI", 19), fill=body)
+    draw.text((24, 755), "e é & @ : ; 6", font=font("StitchedUI", 23), fill=body)
     canvas.save(OUTPUT / f"phone-{'night' if dark else 'linen'}.png", optimize=True)
 
 
 def glyphs(style):
     rows = (
         "ABCDEFGHIJKLM", "NOPQRSTUVWXYZ", "abcdefghijklm", "nopqrstuvwxyz",
-        "0123456789!?&", "ÀÁÂÄÅÆÇÈÉÊËÌÍ", "àáâäåæçèéêëìí", "ÑÖØÙÜÝßœøłđþ€",
+        "0123456789!?&", "@&:;.,!?-+*/", "ÀÁÂÄÅÆÇÈÉÊËÌÍ",
+        "àáâäåæçèéêëìí", "ÑÖØÙÜÝßœøłđþ€",
     )
-    canvas = Image.new("RGB", (1600, 1090), LINEN)
+    canvas = Image.new("RGB", (1600, 1210), LINEN)
     cloth(canvas, LINEN)
     draw = ImageDraw.Draw(canvas)
     draw.text((74, 25), f"{NAME.upper()} / {style.upper()}", font=font("StitchedUI", 29), fill=RED)

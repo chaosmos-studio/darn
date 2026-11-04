@@ -3,6 +3,7 @@
 </p>
 
 Darn is a stitched type family for games, with an embroidered display face and a clear companion for small text.
+Each style maps 291 characters: printable ASCII, selected accented Latin letters, and useful symbols.
 
 Get the TTF and WOFF2 files from the [latest release](https://github.com/chaosmos-studio/darn/releases/latest).
 
