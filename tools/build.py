@@ -220,7 +220,7 @@ def build(style, characters):
         "fullName": family,
         "psName": f"{FILES[style].replace('-', '')}-Regular",
         "version": "Version 0.1.0",
-        "copyright": "Copyright 2026 The Darn Project Authors (https://github.com/chaosmos-studio/darn)",
+        "copyright": "\n".join((ROOT / "OFL.txt").read_text().splitlines()[:2]),
         "licenseDescription": "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org",
         "licenseInfoURL": "https://openfontlicense.org",
     })

@@ -29,7 +29,7 @@ def check(style):
     assert "GPOS" in font, style
     assert font["name"].getDebugName(1) == FAMILIES[style], style
     assert font["name"].getDebugName(2) == "Regular", style
-    assert font["name"].getDebugName(0) == (ROOT / "OFL.txt").read_text().splitlines()[0], style
+    assert font["name"].getDebugName(0).splitlines() == (ROOT / "OFL.txt").read_text().splitlines()[:2], style
     assert webfont.flavor == "woff2", style
     for codepoint, name in cmap.items():
         if codepoint == 32:
