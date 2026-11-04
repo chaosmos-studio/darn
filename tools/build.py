@@ -61,7 +61,7 @@ def form(strokes, style, char=None):
             intervals = (10, 11, 10, 12, 10, 11, 10)
             distance = 0
             stitch_index = 0
-            core_width = 75 if char == "A" else 94
+            core_width = 75 if char == "A" else 84 if char == "e" else 94
             strand_shapes = [line.buffer(core_width, cap_style="flat",
                                          join_style="bevel" if char == "A" else "round",
                                          quad_segs=5)]
@@ -78,7 +78,7 @@ def form(strokes, style, char=None):
                 dx, dy = after.x - before.x, after.y - before.y
                 length = max((dx * dx + dy * dy) ** 0.5, 1)
                 nx, ny = -dy / length, dx / length
-                half_width = (80 if char == "A" else 100) + (stitch_index * 3) % 7
+                half_width = (80 if char == "A" else 90 if char == "e" else 100) + (stitch_index * 3) % 7
                 skew = (-3, -1, 1, 2, 3, -2, 0)[stitch_index % 7]
                 bend = (-2, 1, 0, 2, -1)[stitch_index % 5]
                 thread = LineString([
