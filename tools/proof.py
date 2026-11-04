@@ -103,9 +103,10 @@ def phone(dark):
 def glyphs(style):
     rows = (
         "ABCDEFGHIJKLM", "NOPQRSTUVWXYZ", "abcdefghijklm", "nopqrstuvwxyz",
-        "0123456789!?&", "ÀÁÂÄÅÆÇÈÉÊËÌÍ", "àáâäåæçèéêëìí", "ÑÖØÙÜÝßœøłđþ€",
+        "0123456789!?&", "@&:;.,!?-+*/", "ÀÁÂÄÅÆÇÈÉÊËÌÍ",
+        "àáâäåæçèéêëìí", "ÑÖØÙÜÝßœøłđþ€",
     )
-    canvas = Image.new("RGB", (1600, 1090), LINEN)
+    canvas = Image.new("RGB", (1600, 1210), LINEN)
     cloth(canvas, LINEN)
     draw = ImageDraw.Draw(canvas)
     draw.text((74, 25), f"{NAME.upper()} / {style.upper()}", font=font("StitchedUI", 29), fill=RED)

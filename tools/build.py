@@ -16,7 +16,7 @@ from shapely.ops import substring, unary_union
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 sys.path.insert(0, str(ROOT / "sources"))
 from paths import ACCENTS, GLYPHS, STITCHED_GLYPHS  # noqa: E402
 
