@@ -1,0 +1,45 @@
+name: Fonts
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python3 tools/build.py
+      - run: python3 tools/check.py
+      - run: python3 tools/proof.py
+      - run: git diff --exit-code -- fonts specimens
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python3 tools/build.py && python3 tools/check.py
+      - run: python3 tools/package.py "$GITHUB_REF_NAME"
+      - run: gh release create "$GITHUB_REF_NAME" dist/*.zip fonts/*.ttf fonts/*.woff2 --verify-tag --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}
