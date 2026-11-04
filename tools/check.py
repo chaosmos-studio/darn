@@ -20,6 +20,10 @@ def check(style):
     cmap = font.getBestCmap()
     assert set(cmap) == EXPECTED, style
     assert webfont.getBestCmap() == cmap, style
+    assert set(webfont.keys()) == set(font.keys()), style
+    for table in font.keys():
+        if table not in ("GlyphOrder", "head"):
+            assert webfont.getTableData(table) == font.getTableData(table), (style, table)
     assert set(map(ord, PROOF_TEXT)) <= set(cmap), style
     assert font["head"].unitsPerEm == 1000, style
     assert font["OS/2"].fsType == 0, style

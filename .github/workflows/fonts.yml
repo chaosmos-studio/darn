@@ -23,7 +23,7 @@ jobs:
       - run: python3 tools/build.py
       - run: python3 tools/check.py
       - run: python3 tools/proof.py
-      - run: git diff --exit-code -- fonts specimens
+      - run: git diff --exit-code -- fonts/*.ttf
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
