@@ -51,6 +51,18 @@ def centered(draw, y, text, face, color, width):
     draw.text((x, y), text, font=face, fill=color)
 
 
+def wordmark():
+    title = NAME.upper()
+    face = fitted_font("Stitched", title, 245, 1270)
+    canvas = Image.new("RGBA", (1400, 320), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(canvas)
+    box = draw.textbbox((0, 0), title, font=face)
+    x = round((canvas.width - (box[2] - box[0])) / 2 - box[0])
+    y = round((canvas.height - (box[3] - box[1])) / 2 - box[1])
+    draw.text((x, y), title, font=face, fill=(*RED, 255))
+    canvas.save(OUTPUT / "wordmark.png", optimize=True)
+
+
 def preview():
     canvas = Image.new("RGB", (1400, 840), LINEN)
     cloth(canvas, LINEN)
@@ -109,6 +121,7 @@ def glyphs(style):
 
 if __name__ == "__main__":
     OUTPUT.mkdir(exist_ok=True)
+    wordmark()
     preview()
     phone(False)
     phone(True)

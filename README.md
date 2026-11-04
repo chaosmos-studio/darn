@@ -1,17 +1,21 @@
 <p align="center">
-  <img src="specimens/preview.png" alt="Darn font specimen" width="700">
+  <img src="specimens/wordmark.png" alt="Darn" width="700">
 </p>
 
-# Darn
+Darn is a stitched type family for games, with an embroidered display face and a clear companion for small text.
 
-Darn is an original stitched type family for games and other small-screen interfaces.
-Display uses dense directional stitch outlines for titles.
-UI shares its letter shapes with a simpler fill for menus, labels, and instructions.
+Download [Darn Display](fonts/Darn-Display.ttf) and [Darn UI](fonts/Darn-UI.ttf).
 
-Install [Darn Display](fonts/Darn-Display.ttf) and [Darn UI](fonts/Darn-UI.ttf), or use their WOFF2 exports for the web.
-The [linen](specimens/phone-linen.png) and [dark](specimens/phone-night.png) phone specimens show both styles at 390 by 844 pixels.
+## Specimens
 
-The editable glyph paths are in `sources/paths.py`.
-Install the pinned packages in `requirements.txt`, then run `python3 tools/build.py`, `python3 tools/check.py`, and `python3 tools/proof.py` to rebuild and review the family.
+![Darn display and UI styles](specimens/preview.png)
 
-Darn is licensed under the [SIL Open Font License 1.1](OFL.txt).
+![Darn on light linen at phone size](specimens/phone-linen.png)
+![Darn on a dark background at phone size](specimens/phone-night.png)
+
+![Darn Display alphabet and selected symbols](specimens/glyphs-display.png)
+![Darn UI alphabet and selected symbols](specimens/glyphs-ui.png)
+
+## License
+
+Darn is available under the [SIL Open Font License 1.1](OFL.txt).
