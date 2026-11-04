@@ -33,6 +33,9 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+      - run: git merge-base --is-ancestor HEAD origin/main
       - uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.13"
