@@ -4,7 +4,7 @@ from pathlib import Path
 
 from fontTools.ttLib import TTFont
 
-from build import FAMILIES, FILES, STYLES, ensure_brotli, wanted_characters
+from build import FAMILIES, FILES, STYLES, VERSION, ensure_brotli, wanted_characters
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +33,7 @@ def check(style):
     assert "GPOS" in font, style
     assert font["name"].getDebugName(1) == FAMILIES[style], style
     assert font["name"].getDebugName(2) == "Regular", style
+    assert font["name"].getDebugName(5) == f"Version {VERSION}", style
     assert font["name"].getDebugName(0).splitlines() == (ROOT / "OFL.txt").read_text().splitlines()[:2], style
     assert webfont.flavor == "woff2", style
     for codepoint, name in cmap.items():

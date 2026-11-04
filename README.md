@@ -4,7 +4,7 @@
 
 Darn is a stitched type family for games, with an embroidered display face and a clear companion for small text.
 
-Download [Darn Display](fonts/Darn-Display.ttf) and [Darn UI](fonts/Darn-UI.ttf).
+Get the TTF and WOFF2 files from the [latest release](https://github.com/chaosmos-studio/darn/releases/latest).
 
 ## Specimens
 

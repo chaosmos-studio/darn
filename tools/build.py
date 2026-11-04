@@ -16,6 +16,7 @@ from shapely.ops import substring, unary_union
 
 
 ROOT = Path(__file__).resolve().parents[1]
+VERSION = "0.1.0"
 sys.path.insert(0, str(ROOT / "sources"))
 from paths import ACCENTS, GLYPHS, STITCHED_GLYPHS  # noqa: E402
 
@@ -216,10 +217,10 @@ def build(style, characters):
     builder.setupNameTable({
         "familyName": family,
         "styleName": "Regular",
-        "uniqueFontIdentifier": f"{family} 0.1.0",
+        "uniqueFontIdentifier": f"{family} {VERSION}",
         "fullName": family,
         "psName": f"{FILES[style].replace('-', '')}-Regular",
-        "version": "Version 0.1.0",
+        "version": f"Version {VERSION}",
         "copyright": "\n".join((ROOT / "OFL.txt").read_text().splitlines()[:2]),
         "licenseDescription": "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org",
         "licenseInfoURL": "https://openfontlicense.org",
