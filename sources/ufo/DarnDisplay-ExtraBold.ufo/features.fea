@@ -112,7 +112,7 @@ feature mark {
   pos base uni0065 <anchor 344 608> mark @TOP <anchor 344 -108> mark @BOTTOM;
   pos base uni0066 <anchor 259 837> mark @TOP <anchor 259 -35> mark @BOTTOM;
   pos base uni0067 <anchor 345 616> mark @TOP <anchor 345 -321> mark @BOTTOM;
-  pos base uni0068 <anchor 376 744> mark @TOP <anchor 376 -32> mark @BOTTOM;
+  pos base uni0068 <anchor 375 744> mark @TOP <anchor 375 -32> mark @BOTTOM;
   pos base uni0069 <anchor 149 770> mark @TOP <anchor 149 -33> mark @BOTTOM;
   pos base uni006A <anchor 227 770> mark @TOP <anchor 227 -338> mark @BOTTOM;
   pos base uni006B <anchor 346 745> mark @TOP <anchor 346 -122> mark @BOTTOM;
@@ -255,9 +255,9 @@ feature mark {
   pos base uni0122 <anchor 398 846> mark @TOP <anchor 398 -271> mark @BOTTOM;
   pos base uni0123 <anchor 345 616> mark @TOP <anchor 345 -321> mark @BOTTOM;
   pos base uni0124 <anchor 390 977> mark @TOP <anchor 390 -35> mark @BOTTOM;
-  pos base uni0125 <anchor 376 980> mark @TOP <anchor 376 -32> mark @BOTTOM;
+  pos base uni0125 <anchor 375 980> mark @TOP <anchor 375 -32> mark @BOTTOM;
   pos base uni0126 <anchor 390 742> mark @TOP <anchor 390 -35> mark @BOTTOM;
-  pos base uni0127 <anchor 376 745> mark @TOP <anchor 376 -32> mark @BOTTOM;
+  pos base uni0127 <anchor 375 745> mark @TOP <anchor 375 -32> mark @BOTTOM;
   pos base uni0128 <anchor 219 1055> mark @TOP <anchor 219 -139> mark @BOTTOM;
   pos base uni0129 <anchor 183 740> mark @TOP <anchor 183 -33> mark @BOTTOM;
   pos base uni012A <anchor 219 1025> mark @TOP <anchor 219 -139> mark @BOTTOM;

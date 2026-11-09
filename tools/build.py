@@ -368,7 +368,7 @@ def build(style, weight, characters):
         "fullName": f"{family} {weight}",
         "psName": filename(style, weight),
         "version": f"Version {FONT_VERSION}",
-        "copyright": "; ".join((ROOT / "OFL.txt").read_text().split("\n\n", 1)[0].splitlines()),
+        "copyright": (ROOT / "OFL.txt").read_text().splitlines()[0],
         "manufacturer": "Chaosmos Studio",
         "designer": "Shravanpuri Goswami",
         "vendorURL": "https://chaosmos.studio",

@@ -42,7 +42,7 @@ def check(style, weight):
     assert font["name"].getDebugName(2) == ("Bold" if weight == "Bold" else "Regular"), style
     assert font["name"].getDebugName(4) == f"{FAMILIES[style]} {weight}", style
     assert font["name"].getDebugName(5) == f"Version {FONT_VERSION}", style
-    assert font["name"].getDebugName(0) == "; ".join((ROOT / "OFL.txt").read_text().split("\n\n", 1)[0].splitlines()), style
+    assert font["name"].getDebugName(0) == (ROOT / "OFL.txt").read_text().splitlines()[0], style
     assert font["head"].fontRevision == 1.0
     assert font["gasp"].gaspRange == {65535: 0x000F}
     assert webfont.flavor == "woff2", style
