@@ -1,0 +1,2 @@
+See AUTHORS.txt for the project creators.
+The letter paths and build code were developed with AI assistance under Shravanpuri Goswami's direction.
