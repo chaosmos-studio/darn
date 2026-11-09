@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni0037.tnum" format="2">
+  <advance width="760"/>
+  <outline>
+    <contour>
+      <point x="626" y="772" type="line"/>
+      <point x="649" y="768" type="line"/>
+      <point x="670" y="757" type="line"/>
+      <point x="686" y="739" type="line"/>
+      <point x="696" y="717" type="line"/>
+      <point x="698" y="694" type="line"/>
+      <point x="692" y="671" type="line"/>
+      <point x="378" y="-29" type="line"/>
+      <point x="366" y="-48" type="line"/>
+      <point x="348" y="-62" type="line"/>
+      <point x="327" y="-70" type="line"/>
+      <point x="305" y="-72" type="line"/>
+      <point x="283" y="-66" type="line"/>
+      <point x="264" y="-53" type="line"/>
+      <point x="250" y="-36" type="line"/>
+      <point x="242" y="-15" type="line"/>
+      <point x="241" y="8" type="line"/>
+      <point x="246" y="29" type="line"/>
+      <point x="515" y="628" type="line"/>
+      <point x="133" y="628" type="line"/>
+      <point x="111" y="632" type="line"/>
+      <point x="91" y="642" type="line"/>
+      <point x="75" y="658" type="line"/>
+      <point x="65" y="678" type="line"/>
+      <point x="61" y="700" type="line"/>
+      <point x="65" y="722" type="line"/>
+      <point x="75" y="742" type="line"/>
+      <point x="91" y="758" type="line"/>
+      <point x="111" y="768" type="line"/>
+      <point x="133" y="772" type="line"/>
+    </contour>
+  </outline>
+</glyph>

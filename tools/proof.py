@@ -1,11 +1,11 @@
-"""Render a small set of specimens from the built fonts."""
+"""Render Darn specimens from the built fonts."""
 
 from pathlib import Path
 from random import Random
 
 from PIL import Image, ImageDraw, ImageFont
 
-from build import FAMILIES, FILES
+from build import FAMILIES, WEIGHTS, filename
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,8 +19,9 @@ RED = (166, 62, 71)
 GOLD = (237, 183, 124)
 
 
-def font(style, size):
-    return ImageFont.truetype(ROOT / "fonts" / f"{FILES[style]}.ttf", size)
+def font(style, size, weight=None):
+    weight = weight or WEIGHTS[style][-1]
+    return ImageFont.truetype(ROOT / "fonts" / "ttf" / f"{filename(style, weight)}.ttf", size)
 
 
 def fitted_font(style, text, size, width):
@@ -102,24 +103,46 @@ def phone(dark):
     canvas.save(OUTPUT / f"phone-{'night' if dark else 'linen'}.png", optimize=True)
 
 
-def glyphs(style):
+def glyphs(style, weight=None):
+    weight = weight or WEIGHTS[style][-1]
     rows = (
         "ABCDEFGHIJKLM", "NOPQRSTUVWXYZ", "abcdefghijklm", "nopqrstuvwxyz",
         "0123456789!?&", "@&:;.,!?-+*/", "ÀÁÂÄÅÆÇÈÉÊËÌÍ",
-        "àáâäåæçèéêëìí", "ÑÖØÙÜÝßœøłđþ€",
+        "àáâäåæçèéêëìí", "ÑÖØÙÜÝßœøł€₹◌",
     )
     canvas = Image.new("RGB", (1600, 1210), LINEN)
     cloth(canvas, LINEN)
     draw = ImageDraw.Draw(canvas)
-    draw.text((74, 25), f"{NAME.upper()} / {style.upper()}", font=font("StitchedUI", 29), fill=RED)
+    draw.text((74, 25), f"{NAME.upper()} / {FAMILIES[style].removeprefix('Darn ').upper()} / {weight.upper()}",
+              font=font("StitchedUI", 29, "Regular"), fill=RED)
     for row_index, row in enumerate(rows):
         top = 100 + row_index * 121
         for column, char in enumerate(row):
             left = 68 + column * 112
             draw.rounded_rectangle((left, top, left + 100, top + 104), radius=8,
                                    outline=(202, 184, 161), width=2)
-            draw.text((left + 16, top + 9), char, font=font(style, 68), fill=INK)
-    canvas.save(OUTPUT / f"glyphs-{'display' if style == 'Stitched' else 'ui'}.png", optimize=True)
+            draw.text((left + 16, top + 9), char, font=font(style, 68, weight), fill=INK)
+    label = "display" if style == "Stitched" else "text"
+    canvas.save(OUTPUT / f"glyphs-{label}-{weight.lower()}.png", optimize=True)
+
+
+def weights():
+    canvas = Image.new("RGB", (1400, 1000), LINEN)
+    cloth(canvas, LINEN)
+    draw = ImageDraw.Draw(canvas)
+    draw.text((70, 30), "DARN / FAMILY WEIGHTS", font=font("StitchedUI", 34, "Regular"), fill=INK)
+    samples = (("Stitched", "Regular"), ("Stitched", "ExtraBold"),
+               ("StitchedUI", "Regular"), ("StitchedUI", "Bold"))
+    for index, (style, weight) in enumerate(samples):
+        top = 115 + index * 220
+        label = f"{FAMILIES[style]} / {weight}"
+        draw.text((74, top), label, font=font("StitchedUI", 30, "Regular"), fill=INK)
+        draw.text((74, top + 48), "The First Stitch 0123456789",
+                  font=fitted_font(style, "The First Stitch 0123456789", 72, 1250)
+                  if weight == WEIGHTS[style][-1] else
+                  font(style, 62, weight), fill=RED if style == "Stitched" else INK)
+        draw.line((74, top + 196, 1326, top + 196), fill=(202, 184, 161), width=2)
+    canvas.save(OUTPUT / "weights.png", optimize=True)
 
 
 if __name__ == "__main__":
@@ -128,5 +151,7 @@ if __name__ == "__main__":
     preview()
     phone(False)
     phone(True)
-    glyphs("Stitched")
-    glyphs("StitchedUI")
+    weights()
+    for style in ("Stitched", "StitchedUI"):
+        for weight in WEIGHTS[style]:
+            glyphs(style, weight)
