@@ -65,15 +65,19 @@ def wordmark():
 
 
 def preview():
-    canvas = Image.new("RGB", (1400, 840), LINEN)
+    canvas = Image.new("RGB", (1400, 1000), LINEN)
     cloth(canvas, LINEN)
     draw = ImageDraw.Draw(canvas)
     title = NAME.upper()
     centered(draw, 65, title, fitted_font("Stitched", title, 225, 1230), RED, canvas.width)
-    draw.line((100, 355, 1300, 355), fill=(202, 184, 161), width=2)
-    centered(draw, 390, "PLAY   LEVELS   SETTINGS", font("StitchedUI", 62), INK, canvas.width)
-    centered(draw, 510, "The First Stitch", font("StitchedUI", 65), INK, canvas.width)
-    centered(draw, 635, "SHIFT  0123456789", font("StitchedUI", 55), INK, canvas.width)
+    draw.line((90, 350, 1310, 350), fill=(202, 184, 161), width=2)
+    draw.text((90, 370), "DISPLAY EXTRABOLD", font=font("StitchedUI", 30, "Regular"), fill=INK)
+    for y, line in zip((420, 540), ("The quick brown fox", "jumps over the lazy dog.")):
+        centered(draw, y, line, fitted_font("Stitched", line, 86, 1260), RED, canvas.width)
+    draw.line((90, 690, 1310, 690), fill=(202, 184, 161), width=2)
+    draw.text((90, 710), "TEXT REGULAR", font=font("StitchedUI", 30, "Regular"), fill=INK)
+    for y, line in zip((755, 850), ("The quick brown fox", "jumps over the lazy dog.")):
+        centered(draw, y, line, font("StitchedUI", 64, "Regular"), INK, canvas.width)
     canvas.save(OUTPUT / "preview.png", optimize=True)
 
 
