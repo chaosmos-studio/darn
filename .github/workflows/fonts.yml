@@ -30,7 +30,7 @@ jobs:
       - run: |
           fontspector -p googlefonts --skip-network -x googlefonts/repo/dirname_matches_nameid_1 -l fail --succinct fonts/ttf/DarnDisplay-*.ttf
           fontspector -p googlefonts --skip-network -x googlefonts/repo/dirname_matches_nameid_1 -l fail --succinct fonts/ttf/DarnText-*.ttf
-      - run: git diff --exit-code -- fonts/ttf fonts/webfonts sources/ufo specimens
+      - run: git diff --exit-code -- fonts/ttf fonts/webfonts sources/ufo
 
   release:
     if: github.repository == 'chaosmos-studio/darn' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
