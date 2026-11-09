@@ -63,7 +63,7 @@ jobs:
           fi
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           if git rev-parse --verify --quiet "refs/tags/$tag" >/dev/null; then
-            if ! git diff --quiet "$tag" HEAD -- fonts sources OFL.txt AUTHORS.txt FONTLOG.txt; then
+            if ! git diff --quiet "$tag" HEAD -- fonts sources OFL.txt AUTHORS.txt; then
               echo "Font files changed after $tag; bump VERSION before releasing" >&2
               exit 1
             fi

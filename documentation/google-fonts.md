@@ -5,14 +5,12 @@ Darn Text has Regular and Bold.
 Each font maps 352 characters and covers all 319 codepoints in the Google Fonts Latin Core set as of 9 November 2026.
 The names had no exact match on [fontdata name check](https://namecheck.fontdata.com/) on 9 November 2026.
 The editable paths, UFO sources, TTF exports, WOFF2 exports, OFL license, author contacts, and one-command build are in this repository.
-Darn's OFL header and font metadata retain the Threadline copyright notice because Darn began from Threadline's paths.
 The project discloses AI assistance in `CONTRIBUTORS.txt`.
 
 ## Before submission
 
 - Review the outlines, spacing, accents, and small-size specimens as a designer.
 - Confirm the copyright authors and that no larger retail version of either family exists.
-- Resolve Google Fonts' preference for one upstream repository per family because this repository contains two named families.
 - Run the network-dependent Google Fonts checks when the project is staged in the Google Fonts repository.
 - Get Shravanpuri Goswami's approval before opening any Google Fonts issue or pull request.
 

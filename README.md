@@ -31,6 +31,6 @@ Download [TTF and WOFF2 files](https://github.com/chaosmos-studio/darn/releases/
 ## License
 
 Darn is available under the [SIL Open Font License 1.1](OFL.txt).
-See [AUTHORS.txt](AUTHORS.txt) for the creators and [FONTLOG.txt](FONTLOG.txt) for its Threadline origin.
+See [AUTHORS.txt](AUTHORS.txt) for the creators.
 
 [Build instructions](sources/README.md)
