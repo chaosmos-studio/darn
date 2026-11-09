@@ -19,10 +19,16 @@ jobs:
           python-version: "3.13"
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python3 tools/build.py
+      - run: bash sources/build.sh
       - run: python3 tools/check.py
       - run: python3 tools/proof.py
-      - run: git diff --exit-code -- fonts/*.ttf
+      - uses: fonttools/setup-fontspector@d53404291dc78a5a41cf76ea48e1d13a731fb812
+        with:
+          version: 1.9.0
+      - run: |
+          fontspector -p googlefonts --skip-network -x googlefonts/repo/dirname_matches_nameid_1 -l fail --succinct fonts/ttf/DarnDisplay-*.ttf
+          fontspector -p googlefonts --skip-network -x googlefonts/repo/dirname_matches_nameid_1 -l fail --succinct fonts/ttf/DarnText-*.ttf
+      - run: git diff --exit-code -- fonts/ttf fonts/webfonts sources/ufo specimens
 
   release:
     if: github.repository == 'chaosmos-studio/darn' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
@@ -55,7 +61,7 @@ jobs:
           fi
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           if git rev-parse --verify --quiet "refs/tags/$tag" >/dev/null; then
-            if ! git diff --quiet "$tag" HEAD -- fonts OFL.txt; then
+            if ! git diff --quiet "$tag" HEAD -- fonts sources OFL.txt AUTHORS.txt FONTLOG.txt; then
               echo "Font files changed after $tag; bump VERSION before releasing" >&2
               exit 1
             fi
@@ -89,8 +95,8 @@ jobs:
         run: |
           tag="${{ steps.version.outputs.tag }}"
           if gh release view "$tag" >/dev/null 2>&1; then
-            gh release upload "$tag" dist/*.zip dist/SHA256SUMS fonts/*.ttf fonts/*.woff2 --clobber
+            gh release upload "$tag" dist/*.zip dist/SHA256SUMS fonts/ttf/*.ttf fonts/webfonts/*.woff2 --clobber
           else
-            gh release create "$tag" dist/*.zip dist/SHA256SUMS fonts/*.ttf fonts/*.woff2 --verify-tag --draft --generate-notes
+            gh release create "$tag" dist/*.zip dist/SHA256SUMS fonts/ttf/*.ttf fonts/webfonts/*.woff2 --verify-tag --draft --generate-notes
           fi
           gh release edit "$tag" --draft=false
