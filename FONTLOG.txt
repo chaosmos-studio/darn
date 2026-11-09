@@ -1,0 +1,5 @@
+Darn
+
+Darn began as a modification of Threadline's editable letter paths.
+Both projects are authored by Shravanpuri Goswami and Chaosmos Studio.
+The original Threadline copyright notice remains in Darn's OFL.txt and font metadata.
